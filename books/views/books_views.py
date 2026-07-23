@@ -2,3 +2,6 @@ from django.shortcuts import render
 
 def list_books(request):
     return render(request, 'list_books.html')
+
+def create_book(request):
+    return render(request, 'create_book.html')
