@@ -15,9 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+
 from django.urls import path,include
 from .views import home, editorials, books, auth, contact
-
+from debug_toolbar.toolbar import debug_toolbar_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -30,4 +31,5 @@ urlpatterns = [
     path('books/', include('books.urls.auth_urls')),
     path('books/', include('books.urls.editorials_urls')),
     
-]
+]+debug_toolbar_urls()
+

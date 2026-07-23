@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>crear libro</h1>
-    <p>Esta es la seccion crear libro</p>
+<h1>crear libro</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+    </form>    
 {% endblock %}

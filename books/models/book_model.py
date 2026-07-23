@@ -1,10 +1,9 @@
 from django.db import models
-from .auth_model import Auth
+from .author_model import Author
 from .editorial_model import Editorial
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
-    auth = models.ForeignKey(Auth, on_delete=models.SET_NULL, null=True)
     isbn = models.CharField(max_length=20, null=True, blank=False)
     publication_date = models.DateField(null=True, blank=True)
     pages_number = models.PositiveIntegerField()
@@ -20,6 +19,11 @@ class Book(models.Model):
     gender = models.CharField(null=True, blank=True)
     unit_price = models.DecimalField(max_digits=10,decimal_places=2 ,null=True, blank=True)
     is_out_of_stock = models.BooleanField(default=False)
+    authores = models.ManyToManyField(
+        Author,
+        through='BookAuthor',
+        related_name='books', # esta parametro sera utilizado por el modelo Author como nombre de relacion con el modelo Books ejem: author.books.filter()
+    )
 
     def __str__(self):
         return f'title: {self.title}'

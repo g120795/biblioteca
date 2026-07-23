@@ -1,3 +1,4 @@
 from .editorial_model import Editorial
-from .auth_model import Auth
+from .author_model import Author
 from .book_model import Book
+from .bookauthor_model import BookAuthor
