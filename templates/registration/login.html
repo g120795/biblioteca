@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="max-w-md-auto p-6">
+        <h1 class="text-3xl font-blod mb-6">Iniciar sesión</h1>
+
+        <form method="POST" class="bg-white p-6 rounded shadow space-y-4">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                Entrar
+            </button>
+            <p class="mt-4 text-center text-sm">
+            ¿No tienes cuenta? <a href="{% url 'signup' %}" class="text-blue-600 hover:underline">Signup</a>
+            </p>
+        </form>
+    </div>
+{% endblock %}
