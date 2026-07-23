@@ -21,10 +21,13 @@ from .views import home, editorials, books, auth, contact
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('books/', include('books.urls')),
     path('home/', home, name='home'),
-    path('editorials/', editorials, name='editorials'),
-    path('books/', books, name='books'),
-    path('auth/', auth, name='auth'),
-    path('contact/', contact, name='contact'),
+    path('home/editorials/', editorials, name='editorials'),
+    path('home/books/', books, name='books'),
+    path('home/auth/', auth, name='auth'),
+    path('home/contact/', contact, name='contact'),
+    path('books/', include('books.urls.books_urls')),
+    path('books/', include('books.urls.auth_urls')),
+    path('books/', include('books.urls.editorials_urls')),
+    
 ]
