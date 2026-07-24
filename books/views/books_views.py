@@ -1,8 +1,10 @@
 from django.shortcuts import render
+
 from books.forms.book_form import BookForm
 
-def list_books(request):
-    return render(request, 'list_books.html')
+
+def content_books(request):
+    return render(request, 'content_books.html')
 
 def create_book(request):
     if request.method == 'POST':

@@ -10,9 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
-from pathlib import Path
-from dotenv import load_dotenv
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -67,7 +69,6 @@ TEMPLATES = [
             BASE_DIR/'templates/auth/',
             BASE_DIR/'templates/editorial/',
             BASE_DIR/'templates/registration/',
-            BASE_DIR/'templates/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

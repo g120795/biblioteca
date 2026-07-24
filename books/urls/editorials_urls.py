@@ -1,6 +1,8 @@
 from django.urls import path
-from ..views.editorials_views import list_editorials
+
+from ..views.editorials_views import content_editorials, create_editorial
 
 urlpatterns = [
-    path('list_editorials/', list_editorials, name='list_editorials')
+    path('content_editorials/', content_editorials, name='content_editorials'),
+    path('create_editorial/', create_editorial, name= 'create_editorial')
 ]
