@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}detalle de libro{% endblock%}
+
+{% block content %}
+    <div>
+        <ul>
+            <div class="bg-gray-200 ml-4 rounded shadow order order-gray-900 hover:bg-gray-900 font-bolt">
+                <li class="mt-5 p-4">
+                    <p>Nombre: {{author.name}}</p>
+                    <p>Apellido: {{author.lastname}}</p>
+                    <p>Fecha de nacimiento: {{author.born}}</p>
+                    <p>Nacionalidad: {{author.nationality}}</p>
+                    <p>biografia: {{author.biografia}}</p>
+                    <p>Correo electronico: {{author.email}}</p>
+                    <p>Telefono: {{author.phone}}</p>
+                    <p>Pagina web: {{author.web_site}}</p>
+                    <p>Premios: {{author.awards}}</p>
+                </li>
+                <a href="{% url 'edit_author' author.id %}"><button class="ml-4">Editar</button></a>
+                <a href="{% url 'edit_author' author.id %}"><button class="ml-4">Eliminar</button></a>
+            </div>
+        </ul>
+    </div>
+{% endblock %}

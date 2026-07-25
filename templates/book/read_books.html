@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Lista de libros{% endblock%}
+
+{% block content %}
+    <div>
+        <ul>
+            {% for book in form %}
+            <div class="bg-gray-200 ml-4 rounded shadow order order-gray-900 hover:bg-gray-900 font-bolt">
+                <li class="mt-5 p-4">
+                    <p>Titulo: {{book.title}}</p>
+                    <p>Numero de paginas: {{book.pages_number}}</p>
+                    <p>Editorial: {{book.editorial}}</p>
+                    <p>Genero: {{book.gender}}</p>
+                    <p>Autor(es): {{book.authores}}</p>
+                </li>
+                <a href="{% url 'detail_book' book.id %}"><button class="ml-4">Detalles</button></a>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

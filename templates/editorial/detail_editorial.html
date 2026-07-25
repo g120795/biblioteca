@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}detalle de libro{% endblock%}
+
+{% block content %}
+    <div>
+        <ul>
+            <div class="bg-gray-200 ml-4 rounded shadow order order-gray-900 hover:bg-gray-900 font-bolt">
+                <li class="mt-5 p-4">
+                    <p>Nombre: {{editorial.name}}</p>
+                    <p>Direccion: {{editorial.adress}}</p>
+                    <p>Ciudad: {{editorial.city}}</p>
+                    <p>Region: {{editorial.region}}</p>
+                    <p>Pais: {{editorial.country}}</p>
+                    <p>Codigo postal: {{editorial.postal_code}}</p>
+                    <p>Correo: {{editorial.email}}</p>
+                    <p>Pagina web: {{editorial.web_site}}</p>
+                    <p>Año de fundacion: {{editorial.year_fundation}}</p>
+                </li>
+                <a href="{% url 'edit_editorial' editorial.id %}"><button class="ml-4">Editar</button></a>
+                <a href="{% url 'delete_editorial' editorial.id %}"><button class="ml-4">Eliminar</button></a>
+            </div>
+        </ul>
+    </div>
+{% endblock %}

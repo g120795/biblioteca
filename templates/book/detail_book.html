@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}detalle de libro{% endblock%}
+
+{% block content %}
+    <div>
+        <ul>
+            <div class="bg-gray-200 ml-4 rounded shadow order order-gray-900 hover:bg-gray-900 font-bolt">
+                <li class="mt-5 p-4">
+                    <p>Titulo: {{book.title}}</p>
+                    <p>Isbn: {{book.isbn}}</p>
+                    <p>Fecha de publicacion: {{book.publication_date}}</p>
+                    <p>Numero de paginas: {{book.pages_number}}</p>
+                    <p>Idioma: {{book.lenguage}}</p>
+                    <p>Descripcion: {{book.description}}</p>
+                    <p>Editorial: {{book.editorial}}</p>
+                    <p>Genero: {{book.gender}}</p>
+                    <p>precio: {{book.unit_price}}</p>
+                    <p>Autor(es): {{book.authores}}</p>
+                </li>
+                <a href="{% url 'edit_book' book.id %}"><button class="ml-4">Editar</button></a>
+                <a href="{% url 'delete_book' book.id %}"><button class="ml-4">Eliminar</button></a>
+            </div>
+        </ul>
+    </div>
+{% endblock %}

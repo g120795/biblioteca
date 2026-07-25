@@ -1,6 +1,8 @@
 from django.db import models
+
 from .author_model import Author
 from .editorial_model import Editorial
+
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
@@ -26,5 +28,5 @@ class Book(models.Model):
     )
 
     def __str__(self):
-        return f'title: {self.title}'
+        return f'title: {self.title}, editorial{self.editorial}, autor(es){self.authores}'
     

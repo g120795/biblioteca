@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Lista de autores{% endblock%}
+
+{% block content %}
+    <h1>Lista de authores</h1>
+    <div>
+        <ul>
+            {% for author in form %}
+            <div class="bg-gray-200 ml-4 rounded shadow order order-gray-900 hover:bg-gray-900 font-bolt">
+                <li class="mt-5 p-4">
+                    <p>Nombre: {{author.name}}</p>
+                    <p>Apellido: {{author.lastname}}</p>
+                    <p>Fecha de nacimiento: {{author.born}}</p>
+                    <p>Biografía: {{author.biograpy}}</p>
+                    <p>Premio(s): {{author.awards}}</p>
+                </li>
+                <a href="{% url 'detail_author' author.id %}"><button class="ml-4">Detalles</button></a>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

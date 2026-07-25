@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Lista de editoriales{% endblock%}
+
+{% block content %}
+    <div>
+        <ul>
+            {% for editorial in form %}
+            <div class="bg-gray-200 ml-4 rounded shadow order order-gray-900 hover:bg-gray-900 font-bolt">
+                <li class="mt-5 p-4">
+                    <p>Nombre: {{editorial.name}}</p>
+                    <p>Direccion: {{editorial.adress}}</p>
+                    <p>Pais: {{editorial.country}}</p>
+                    <p>Codigo postal: {{editorial.postal_code}}</p>
+                    <p>Correo: {{editorial.email}}</p>
+                </li>
+                <a href="{% url 'detail_editorial' editorial.id %}"><button class="ml-4">Detalles</button></a>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

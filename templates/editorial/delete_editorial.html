@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+{% block title %}Eliminar editorial{% endblock %}
+{% block content %}
+    <h1>Eliminar editorial</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>esta seguro que quiere eliminar la Editorial: {{editorial.name}}</p>
+        <button>Confirmar</button>
+    </form>
+{% endblock %}
