@@ -15,7 +15,7 @@ def create_book(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'libro creado exitosamente')
-            return redirect('read_books')
+            return redirect('content_books')
     else:
         form = BookForm()
     context = {
@@ -25,10 +25,12 @@ def create_book(request):
 
 def read_books(request):
     queryset = Book.objects.all()
+    search = request.GET.get('search')
+    if search:
+        queryset = queryset.filter(title__icontains=search)
     paginator = Paginator(queryset, 2)
     page_num = request.GET.get('page')
     pagina = paginator.get_page(page_num)
-    print(pagina)
     context = {
         'form':pagina
     }
