@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -6,10 +7,16 @@ from books.forms.book_form import BookForm
 from books.models import Book
 
 
+@login_required
 def content_books(request):
     return render(request, 'content_books.html')
 
+
+@login_required
 def create_book(request):
+    if not request.user.is_staff:
+        messages.warning(request, 'no autorizado')
+        return redirect('read_books')
     if request.method == 'POST':
         form = BookForm(request.POST)
         if form.is_valid():
@@ -23,6 +30,8 @@ def create_book(request):
     }
     return render(request, 'create_book.html', context)
 
+
+@login_required
 def read_books(request):
     queryset = Book.objects.all()
     search = request.GET.get('search')
@@ -36,8 +45,13 @@ def read_books(request):
     }
     return render(request, 'read_books.html', context)
 
+
+@login_required
 def edit_book(request, book_id):
-    book = Book.objects.get(id=book_id)
+    if not request.user.is_staff:
+        messages.warning(request, 'no autorizado')
+        return redirect('read_books')
+    book = get_object_or_404(Book, id=book_id)
     if request.method == 'POST':
         form = BookForm(request.POST, instance=book)
         if form.is_valid():
@@ -52,14 +66,21 @@ def edit_book(request, book_id):
     }
     return render(request, 'edit_book.html', context)
 
+
+@login_required
 def detail_book(request, book_id):
-    book = Book.objects.get(id=book_id)
+    book = get_object_or_404(Book,id=book_id)
     context = {
         'book':book
     }
     return render(request, 'detail_book.html', context)
 
+
+@login_required
 def delete_book(request, book_id):
+    if not request.user.is_staff:
+        messages.warning(request, 'no autorizado')
+        return redirect('read_books')
     libro = get_object_or_404(Book,id=book_id)
     if request.method == 'POST':
         libro.delete()

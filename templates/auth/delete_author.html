@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+{% block title %}Eliminar author{% endblock %}
+{% block content %}
+    <h1>Eliminar author</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>esta seguro que quiere eliminar {{author.name}}</p>
+        <button>Confirmar</button>
+    </form>
+{% endblock %}

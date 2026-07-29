@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_extensions',
 
     'books',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ TEMPLATES = [
             BASE_DIR/'templates/auth/',
             BASE_DIR/'templates/editorial/',
             BASE_DIR/'templates/registration/',
+            BASE_DIR/'templates/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -134,6 +136,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
 
 
 

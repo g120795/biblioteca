@@ -18,19 +18,21 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 from django.contrib import admin
 from django.urls import include, path
 
-from .views import auth, books, contact, editorials, home
+from .views import contact, home, link_logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('home/', home, name='home'),
-    path('home/editorials/', editorials, name='editorials'),
-    path('home/books/', books, name='books'),
-    path('home/auth/', auth, name='auth'),
     path('home/contact/', contact, name='contact'),
+    path('home/link_logout/', link_logout, name='link_logout'),
     path('books/', include('books.urls.books_urls')),
     path('books/', include('books.urls.auth_urls')),
     path('books/', include('books.urls.editorials_urls')),
+    path('accounts/',include('django.contrib.auth.urls')),
+    path('user/', include('user.urls')),
+
+    
     
 ]+debug_toolbar_urls()
 

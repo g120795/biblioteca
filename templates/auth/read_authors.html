@@ -7,14 +7,14 @@
         <ul>
             {% for author in form %}
             <div class="bg-gray-200 ml-4 rounded shadow order order-gray-900 hover:bg-gray-900 font-bolt">
-                <li class="mt-5 p-4">
+                <li class="m-2">
                     <p>Nombre: {{author.name}}</p>
                     <p>Apellido: {{author.lastname}}</p>
                     <p>Fecha de nacimiento: {{author.born}}</p>
                     <p>Biografía: {{author.biograpy}}</p>
                     <p>Premio(s): {{author.awards}}</p>
                 </li>
-                <a href="{% url 'detail_author' author.id %}"><button class="ml-4">Detalles</button></a>
+                <a href="{% url 'detail_author' author.id %}">Detalles</a>
             </div>
             {% endfor %}
         </ul>

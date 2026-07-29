@@ -6,6 +6,9 @@
         <li><a href="{% url 'content_editorials' %}">Editoriales</a></li>
         <li><a href="{% url 'content_auth' %}">autores</a></li>
         <li><a href="{% url 'contact' %}">Contacto</a></li>
+        {%if request.user.is_authenticated %}
+            <li><a href="{% url 'link_logout' %}">Logout</a></li>
+        {%endif%}
         
     </div>
 </ul>

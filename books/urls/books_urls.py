@@ -1,6 +1,6 @@
 from django.urls import path
 
-from ..views.books_views import (
+from books.views.books_views import (
     content_books,
     create_book,
     delete_book,

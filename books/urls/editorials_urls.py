@@ -1,6 +1,6 @@
 from django.urls import path
 
-from ..views.editorials_views import (
+from books.views.editorials_views import (
     content_editorials,
     create_editorial,
     delete_editorial,
