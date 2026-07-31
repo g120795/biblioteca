@@ -22,7 +22,7 @@ def create_book(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'libro creado exitosamente')
-            return redirect('content_books')
+            
     else:
         form = BookForm()
     context = {

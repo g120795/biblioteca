@@ -6,7 +6,7 @@ from .editorial_model import Editorial
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
-    isbn = models.CharField(max_length=20, null=True, blank=False)
+    isbn = models.CharField(max_length=20, null=True, blank=False, unique=True)
     publication_date = models.DateField(null=True, blank=True)
     pages_number = models.PositiveIntegerField()
 
@@ -28,5 +28,5 @@ class Book(models.Model):
     )
 
     def __str__(self):
-        return f'title: {self.title}, editorial{self.editorial}, autor(es){self.authores}'
+        return f'title: {self.title},isbn: {self.isbn} editorial{self.editorial}, autor(es){self.authores}'
     
