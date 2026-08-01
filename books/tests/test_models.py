@@ -55,6 +55,13 @@ class ApiTestBook(TestCase):
 
 
     def test_create_read_book(self):
+        response = self.navegador2.get('/books/read_books/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['form'].object_list), 1)
+        libro = response.context['form'].object_list
+        self.assertEqual(libro[0].title, 'el talisman')
+
+
         book = {
             'title' : 'el brujo',
             'isbn' :'23343123432',
@@ -69,18 +76,35 @@ class ApiTestBook(TestCase):
             'authores' : 1,
         }
         response = self.navegador2.post('/books/create_book/', book)
-        print(response.context['form'])
         self.assertEqual(response.status_code, 200)
         response1 = self.navegador2.get('/books/read_books/')
-        pagina = response1.context['form']
-        for i in pagina.object_list:
-            print(i.isbn)
-        libro = Book.objects.get(title='el brujo')
-        print(libro)
-        
-        
+        self.assertEqual(len(response1.context['form'].object_list), 2)
+        libros = response1.context['form'].object_list
+        self.assertEqual(libros[1].title, 'el brujo')
 
+        
+    def test_edit_book(self):
+        data = {   'title': self.libro.title,
+                        'isbn': '2222222222222',
+                        'publication_date': self.libro.publication_date,
+                        'pages_number': self.libro.pages_number,
+                        'language': self.libro.language,
+                        'editorial': self.editorial.id,
+                        'description': self.libro.description,
+                        'gender': self.libro.gender,
+                        'unit_price': self.libro.unit_price,
+                        'authores': self.author.id,
+                        'is_out_of_stock': self.libro.is_out_of_stock,                         
+                    }
+        
+        response = self.navegador2.post(f'/books/{self.libro.id}/edit_book/',data
+        )
 
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/books/read_books/')
+        update_book = Book.objects.get(id=self.libro.id)
+        self.assertEqual(update_book.isbn, '2222222222222')
+        
 
 
 
